@@ -21,7 +21,7 @@ ui_wrapper <- function(
       class = "fw-bold font-monospace",
       "Company news"
     ),
-    bslib::nav_panel(title = "App1", shiny::tags$p("First page content.")),
+    bslib::nav_panel(title = "App1", ui),
     bslib::nav_panel(title = "App2", shiny::tags$p("Second page content.")),
     bslib::nav_panel(title = "App3", shiny::tags$p("Third page content.")),
     bslib::nav_spacer()
