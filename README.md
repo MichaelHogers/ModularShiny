@@ -9,8 +9,6 @@ This repository contains a suite of interconnected Shiny applications and associ
 - `ShinyAdmin`: An admin interface for managing Shiny applications.
 - `deployment/shinyproxy`: Configuration files for deploying apps with ShinyProxy.
 - `helperAuth`, `helperDbManagement`, `helperDesign`: Helper packages to support app functionality.
-- `README.md`: Documentation of repository structure and setup instructions.
-- `architecture.excalidraw`: Visual representation of the project architecture.
 
 ## Project Architecture
 ![Modular Shiny Architecture](docs/diagrams/architecture.png)
