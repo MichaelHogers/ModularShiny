@@ -23,8 +23,7 @@ The architecture is designed to keep Shiny projects mostly isolated, while share
 - `helperDesign`: Contains common UI elements and themes.
 
 ## Deployment
-We use ShinyProxy to serve our Shiny applications. Other deployment methods may work as well,
-such as RStudio Connect.
+Repo focuses on ShinyProxy to serve applications. Other deployment methods, such as RStudio Connect, may work as well.
 
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details.
