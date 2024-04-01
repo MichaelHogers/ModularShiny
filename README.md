@@ -13,7 +13,7 @@ This repository contains a suite of interconnected Shiny applications and associ
 - `architecture.excalidraw`: Visual representation of the project architecture.
 
 ## Project Architecture
-![Modular Shiny Architecture](architecture.png)
+![Modular Shiny Architecture](docs/diagrams/architecture.png)
 
 The architecture is designed to keep Shiny projects mostly isolated, while shared logic is maintained through helper packages.
 
