@@ -14,5 +14,5 @@ Suggests:
     rlang
 Config/testthat/edition: 3
 Imports:
-    bslib (=== 0.7.0),
+    bslib (== 0.7.0),
     shiny
