@@ -23,19 +23,8 @@ The architecture is designed to keep Shiny projects mostly isolated, while share
 - `helperDesign`: Contains common UI elements and themes.
 
 ## Deployment
-We use ShinyProxy to serve our Shiny applications. Here is a snippet of our configuration:
-
-```yaml
-proxy:
-  title: ShinyProxy
-  logo-url: http://www.example.org/logo.png
-  landing-page: /
-  heartbeat-rate: 10000
-  heartbeat-timeout: 60000
-  port: 8080
-  authentication: simple
-  admin-groups: admins
-...
+We use ShinyProxy to serve our Shiny applications. Other deployment methods may work as well,
+such as RStudio Connect.
 
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details.
