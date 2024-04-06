@@ -11,7 +11,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports:
     shiny,
-    helperDesign,
+    helperDesign (>= 1.0.0),
     logger,
     bslib
 Remotes:

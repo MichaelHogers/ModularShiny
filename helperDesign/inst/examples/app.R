@@ -2,7 +2,7 @@ library(shiny)
 library(bslib)
 
 ui <- helperDesign::ui_wrapper(
-    name = "App2",
+    name = "ShinyApp2",
     shiny::tags$div("First page content.")
 )
 

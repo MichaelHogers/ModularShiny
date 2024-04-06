@@ -22,7 +22,7 @@ start_app <- function(
 
 app_ui <- function(id) {
     helperDesign::ui_wrapper(
-        name = "App1",
+        name = "ShinyApp1",
         shiny::tags$div("ShinyApp1 functionality")
     )
 }

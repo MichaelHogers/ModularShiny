@@ -22,7 +22,7 @@ start_app <- function(
 
 app_ui <- function(id) {
     helperDesign::ui_wrapper(
-        name = "Admin",
+        name = "ShinyAdmin",
         shiny::tags$div("Admin functionality")
     )
 }

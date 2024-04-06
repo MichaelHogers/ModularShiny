@@ -10,7 +10,12 @@
 #' @export
 ui_wrapper <- function(
     ui,
-    name = c("App1", "App2", "App3", "Admin")
+    name = c(
+      "ShinyApp1",
+      "ShinyApp2",
+      "ShinyApp3",
+      "ShinyAdmin"
+    )
 ) {
 
   name <- match.arg(name)
@@ -34,10 +39,10 @@ ui_wrapper <- function(
 }
 
 endpoints <- list(
-  "App1" = "/app/app1",
-  "App2" = "/app/app2",
-  "App3" = "/app/app3",
-  "Admin" = "/app/admin"
+  "ShinyApp1" = "/app/app1",
+  "ShinyApp2" = "/app/app2",
+  "ShinyApp3" = "/app/app3",
+  "ShinyAdmin" = "/app/admin"
 )
 
 generate_ui <- function(
