@@ -10,7 +10,7 @@
 #' @export
 ui_wrapper <- function(
     ui,
-    name = c("App1", "App2", "App3")
+    name = c("App1", "App2", "App3", "Admin")
 ) {
 
   name <- match.arg(name)
