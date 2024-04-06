@@ -55,7 +55,7 @@ generate_ui <- function(
     } else {
       url <- endpoints[[app]]
       bslib::nav_item(
-        tags$a(
+        shiny::tags$a(
           app,
           href = url,
           target = "_parent"

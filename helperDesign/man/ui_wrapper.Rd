@@ -9,7 +9,8 @@ ui_wrapper(ui, name = c("App1", "App2", "App3"))
 \arguments{
 \item{ui}{the UI to wrap}
 
-\item{name}{the name of the app module}
+\item{name}{the name of the app module, one of
+"App1", "App2", "App3", "Admin"}
 }
 \value{
 a standardised dashboard layout, shiny.tag.list class
