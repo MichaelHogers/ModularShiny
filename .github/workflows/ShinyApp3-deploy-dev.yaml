@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build Image
+    name: ShinyApp3 - Build Image
     runs-on: ubuntu-latest
 
     steps:
@@ -36,5 +36,6 @@ jobs:
           ECR_REPOSITORY: satrdays2024-shinyapp3
           IMAGE_TAG: dev
         run: |
+          cd ShinyApp3
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
