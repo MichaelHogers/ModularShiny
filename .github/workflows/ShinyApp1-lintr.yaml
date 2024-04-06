@@ -32,6 +32,7 @@ jobs:
         with:
           extra-packages: any::lintr, local::.
           needs: lint
+        working-directory: ShinyApp1
 
       - name: Lint
         run: lintr::lint_package(path = "ShinyApp1")
