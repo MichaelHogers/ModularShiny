@@ -20,6 +20,7 @@ start_app <- function(
   )
 }
 
+#' @export
 app_ui <- function(id) {
     helperDesign::ui_wrapper(
         name = "ShinyApp1",
@@ -27,6 +28,7 @@ app_ui <- function(id) {
     )
 }
 
+#' @export
 app_server <- function(
     id
 ) {
