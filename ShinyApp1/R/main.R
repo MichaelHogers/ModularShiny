@@ -11,7 +11,7 @@ start_app <- function(
   shiny::shinyApp(
     ui = app_ui(id = "app1"),
     server = function(input, output, session) {
-        app1_server(id = "app1")
+        app_server(id = "app1")
     },
     options = list(
       port = port,

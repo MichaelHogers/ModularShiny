@@ -1,8 +1,10 @@
-name: Deploy to ECR (Dev)
+name: ShinyAdmin - Deploy to ECR (Dev)
 
 on:
   push:
     branches: [main, master]
+    paths:
+      - "ShinyAdmin/**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -34,5 +36,6 @@ jobs:
           ECR_REPOSITORY: satrdays2024-shinyadmin
           IMAGE_TAG: dev
         run: |
+          cd ShinyAdmin
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
