@@ -9,9 +9,9 @@ start_app <- function(
     host = "0.0.0.0"
 ) {
   shiny::shinyApp(
-    ui = app_ui(id = "app1"),
+    ui = app_ui(id = "app2"),
     server = function(input, output, session) {
-        app_server(id = "app1")
+        app_server(id = "app2")
     },
     options = list(
       port = port,
@@ -22,8 +22,8 @@ start_app <- function(
 
 app_ui <- function(id) {
     helperDesign::ui_wrapper(
-        name = "App1",
-        shiny::tags$div("ShinyApp1 functionality")
+        name = "App2",
+        shiny::tags$div("ShinyApp2 functionality")
     )
 }
 
@@ -31,6 +31,6 @@ app_server <- function(
     id
 ) {
     shiny::moduleServer(id, function(input, output, session) {
-        logger::log_info("App1 server loaded")
+        logger::log_info("App server loaded")
     })
 }
