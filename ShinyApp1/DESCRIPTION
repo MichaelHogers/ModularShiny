@@ -15,6 +15,7 @@ RoxygenNote: 7.2.3
 Imports:
     shiny,
     helperDesign,
-    logger
+    logger,
+    bslib
 Remotes:
     helperDesign=MichaelHogers/ModularShiny/helperDesign
