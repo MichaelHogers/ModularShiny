@@ -4,13 +4,17 @@
 #' points to specific Shiny modules. Setting "App1", will render the
 #' first navbar item as active.
 #' @param ui the UI to wrap
-#' @param name the name of the app module
+#' @param name the name of the app module, one of
+#' "App1", "App2", "App3", "Admin"
 #' @return a standardised dashboard layout, shiny.tag.list class
 #' @export
 ui_wrapper <- function(
     ui,
     name = c("App1", "App2", "App3")
 ) {
+
+  name <- match.arg(name)
+
   bslib::page_navbar(
     title = "Penguins Ltd.",
     theme = internal_theme,
@@ -21,9 +25,43 @@ ui_wrapper <- function(
       class = "fw-bold font-monospace",
       "Company news"
     ),
-    bslib::nav_panel(title = "App1", ui),
-    bslib::nav_panel(title = "App2", shiny::tags$p("Second page content.")),
-    bslib::nav_panel(title = "App3", shiny::tags$p("Third page content.")),
+    !!!generate_ui(
+      name = name,
+      ui = ui
+    ),
     bslib::nav_spacer()
   )
+}
+
+endpoints <- list(
+  "App1" = "/app/app1",
+  "App2" = "/app/app2",
+  "App3" = "/app/app3",
+  "Admin" = "/app/admin"
+)
+
+generate_ui <- function(
+  name,
+  ui
+) {
+  result <- lapply(names(endpoints), function(app) {
+    active <- app == name
+
+    if (active) {
+      bslib::nav_panel(
+        title = app,
+        ui
+      )
+    } else {
+      url <- endpoints[[app]]
+      bslib::nav_item(
+        tags$a(
+          app,
+          href = url,
+          target = "_parent"
+        ),
+        active = active
+      )
+    }
+  })
 }
