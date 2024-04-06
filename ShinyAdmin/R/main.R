@@ -8,11 +8,11 @@ start_app <- function(
     port = 8080,
     host = "0.0.0.0"
 ) {
-  shiny::shinyApp(
-    ui = app_ui(id = "app_admin"),
-    server = function(input, output, session) {
-        app_server(id = "app_admin")
-    },
+
+  shiny::shinyAppDir(
+    system.file("app/",
+      package = "ShinyAdmin"
+    ),
     options = list(
       port = port,
       host = host
@@ -20,13 +20,36 @@ start_app <- function(
   )
 }
 
+#' @export
 app_ui <- function(id) {
-    helperDesign::ui_wrapper(
-        name = "ShinyAdmin",
-        shiny::tags$div("Admin functionality")
-    )
+        bslib::page_fillable(
+        bslib::layout_column_wrap(
+            width = "250px",
+            fill = FALSE,
+            bslib::value_box(
+    title = "1st value",
+    value = "123",
+    showcase = bsicons::bs_icon("bar-chart"),
+    theme = "blue",
+    shiny::tags$p("The 1st detail")
+  ),
+  bslib::value_box(
+    title = "2nd value",
+    value = "456",
+    showcase = bsicons::bs_icon("graph-up"),
+    theme = "orange",
+    shiny::tags$p("The 2nd detail"),
+    shiny::tags$p("The 3rd detail")
+  )
+        ),
+        bslib::card(
+            min_height = 200,
+            plotly::plot_ly(x = rnorm(100))
+        )
+        )
 }
 
+#' @export
 app_server <- function(
     id
 ) {

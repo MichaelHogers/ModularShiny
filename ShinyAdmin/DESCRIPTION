@@ -13,7 +13,8 @@ Imports:
     shiny,
     helperDesign (>= 1.0.0),
     logger,
-    bslib
+    bslib,
+    bsicons
 Remotes:
     helperDesign=MichaelHogers/ModularShiny/helperDesign
 Suggests:
