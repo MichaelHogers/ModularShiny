@@ -1,4 +1,4 @@
-name: Deploy to ECR (Dev)
+name: ShinyApp3 - Deploy to ECR (Dev)
 
 on:
   push:
