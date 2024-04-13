@@ -10,6 +10,7 @@ on:
     types: [opened, synchronize, reopened, review_requested, ready_for_review]
     paths:
       - "ShinyApp2/**"
+  workflow_dispatch:
 
 name: ShinyApp2 - R-CMD-check
 

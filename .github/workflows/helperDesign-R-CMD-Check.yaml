@@ -10,6 +10,7 @@ on:
     types: [opened, synchronize, reopened, review_requested, ready_for_review]
     paths:
       - "helperDesign/**"
+    workflow_dispatch:
 
 name: helperDesign - R-CMD-check
 

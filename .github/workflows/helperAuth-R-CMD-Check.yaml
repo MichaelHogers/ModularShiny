@@ -10,6 +10,7 @@ on:
     types: [opened, synchronize, reopened, review_requested, ready_for_review]
     paths:
       - "helperAuth/**"
+    workflow_dispatch:
 
 name: helperAuth - R-CMD-check
 

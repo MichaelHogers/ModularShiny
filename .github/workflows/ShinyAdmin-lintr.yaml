@@ -11,6 +11,7 @@ on:
     if: github.event.pull_request.draft == false
     paths:
       - "ShinyAdmin/**"
+    workflow_dispatch:
 
 name: ShinyAdmin - lint
 
