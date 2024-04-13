@@ -14,7 +14,8 @@ Imports:
     helperDesign (>= 1.0.0),
     logger,
     bslib,
-    bsicons
+    bsicons,
+    DT
 Remotes:
     helperDesign=MichaelHogers/ModularShiny/helperDesign
 Suggests:
