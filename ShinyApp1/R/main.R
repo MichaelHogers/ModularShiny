@@ -20,6 +20,9 @@ start_app <- function(
   )
 }
 
+#' Main application UI module
+#'
+#' @param id namespace
 #' @export
 app_ui <- function(id) {
     helperDesign::ui_wrapper(
@@ -28,6 +31,9 @@ app_ui <- function(id) {
     )
 }
 
+#' Main application server module
+#'
+#' @param id namespace
 #' @export
 app_server <- function(
     id
