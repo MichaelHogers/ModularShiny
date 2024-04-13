@@ -11,6 +11,7 @@ on:
       if: github.event.pull_request.draft == false
       paths:
         - "helperAuth/**"
+    workflow_dispatch:
 
 name: helperAuth - lint
 
