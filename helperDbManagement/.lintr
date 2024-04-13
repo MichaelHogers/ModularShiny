@@ -1,0 +1,6 @@
+linters: linters_with_defaults(
+  object_usage_linter = NULL,
+  cyclocomp_linter(40),
+  indentation_linter = NULL
+  ) # see vignette("lintr")
+encoding: "UTF-8"
