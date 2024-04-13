@@ -6,9 +6,7 @@
 #' @export
 start_app <- function(
     port = 8080,
-    host = "0.0.0.0"
-) {
-
+    host = "0.0.0.0") {
   shiny::shinyAppDir(
     system.file("app/",
       package = "ShinyAdmin"
@@ -22,38 +20,35 @@ start_app <- function(
 
 #' @export
 app_ui <- function(id) {
-        bslib::page_fillable(
-        bslib::layout_column_wrap(
-            width = "250px",
-            fill = FALSE,
-            bslib::value_box(
-    title = "1st value",
-    value = "123",
-    showcase = bsicons::bs_icon("bar-chart"),
-    theme = "blue",
-    shiny::tags$p("The 1st detail")
-  ),
-  bslib::value_box(
-    title = "2nd value",
-    value = "456",
-    showcase = bsicons::bs_icon("graph-up"),
-    theme = "orange",
-    shiny::tags$p("The 2nd detail"),
-    shiny::tags$p("The 3rd detail")
+  bslib::page_fillable(
+    bslib::layout_column_wrap(
+      width = "250px",
+      fill = FALSE,
+      bslib::value_box(
+        title = "Registered users",
+        value = "5,000",
+        showcase = bsicons::bs_icon("bar-chart"),
+        theme = "blue",
+        shiny::tags$p("These users completed the entire registration journey")
+      ),
+      bslib::value_box(
+        title = "Daily page visits",
+        value = "1,000",
+        showcase = bsicons::bs_icon("graph-up"),
+        theme = "light"
+      )
+    ),
+    bslib::card(
+      min_height = 200,
+      plotly::plot_ly(x = rnorm(100))
+    )
   )
-        ),
-        bslib::card(
-            min_height = 200,
-            plotly::plot_ly(x = rnorm(100))
-        )
-        )
 }
 
 #' @export
 app_server <- function(
-    id
-) {
-    shiny::moduleServer(id, function(input, output, session) {
-        logger::log_info("app server loaded")
-    })
+    id) {
+  shiny::moduleServer(id, function(input, output, session) {
+    logger::log_info("app server loaded")
+  })
 }
