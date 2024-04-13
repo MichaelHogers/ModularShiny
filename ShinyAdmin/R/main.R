@@ -22,7 +22,6 @@ start_app <- function(
 #' @param id namespace
 #' @export
 app_ui <- function(id) {
-
   ns <- shiny::NS(id)
 
   bslib::page_fillable(
@@ -31,7 +30,9 @@ app_ui <- function(id) {
       fill = FALSE,
       bslib::value_box(
         title = "Registered users",
-        value = "5,000",
+        value = shiny::uiOutput(
+          outputId = ns("user_count")
+        ),
         showcase = bsicons::bs_icon("bar-chart"),
         theme = "blue",
         shiny::tags$p("These users completed the entire registration journey")
@@ -50,7 +51,14 @@ app_ui <- function(id) {
     bslib::card(
       full_screen = TRUE,
       max_height = 350,
-      bslib::card_header("My table"),
+      bslib::card_header(
+        "User table",
+        shiny::actionButton(
+          inputId = ns("add_user_modal"),
+          label = "Add user",
+          class = "btn-secondary float-right"
+        )
+      ),
       DT::dataTableOutput(ns("dt"))
     )
   )
@@ -61,17 +69,56 @@ app_ui <- function(id) {
 #' @export
 app_server <- function(id) {
   shiny::moduleServer(id, function(input, output, session) {
-    logger::log_info("app server loaded")
 
+    ns <- session$ns
+
+    update_trigger <- shiny::reactiveVal()
+
+    # Display user count -----------------------------------------------
+    output$user_count <- shiny::renderUI({
+      update_trigger()
+      shiny::tagList(
+        helperDbManagement::get_user_count()
+      )
+    })
+
+    # Add user modal --------------------------------------------------
+    shiny::observeEvent(input$add_user_modal, {
+      shiny::showModal(
+        shiny::modalDialog(
+          title = "Add user",
+          shiny::textInput(ns("user_name"), "User name"),
+          shiny::selectInput(
+           ns("access_rights"), "Access rights", c("admin", "user")
+          ),
+          shiny::actionButton(ns("add_user_save"), "Save")
+        )
+      )
+    })
+
+    shiny::observeEvent(input$add_user_save, {
+      result <- helperDbManagement::add_user(
+        user_name = input$user_name,
+        last_login = Sys.time(),
+        access_rights = input$access_rights
+      )
+      if (result) {
+        shiny::showNotification("User added", duration = 5)
+        shiny::removeModal()
+        update_trigger(runif(1))
+      } else {
+        shiny::showNotification("Failed to add user", duration = 5)
+      }
+    })
+
+    # Display user table -----------------------------------------------
     output$dt <- DT::renderDataTable({
+      update_trigger()
       DT::datatable(
-        data.frame(
-          `User` = c("Alice", "Bob", "Charlie"),
-          `Number of Logins` = c(10, 20, 30),
-          check.names = FALSE
-        ),
+        helperDbManagement::get_users(),
         fillContainer = TRUE
       )
     })
+
   })
 }

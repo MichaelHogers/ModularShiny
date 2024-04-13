@@ -11,6 +11,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports:
     shiny,
+    helperDbManagement (>= 1.1.0),
     helperDesign (>= 1.0.0),
     logger,
     bslib,
@@ -19,7 +20,8 @@ Imports:
     plotly,
     stats
 Remotes:
-    helperDesign=MichaelHogers/ModularShiny/helperDesign
+    helperDesign=MichaelHogers/ModularShiny/helperDesign,
+    helperDbManagement=MichaelHogers/ModularShiny/helperDbManagement
 Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
