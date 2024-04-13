@@ -12,6 +12,7 @@ on:
       paths:
         - "helperAuth/**"
     workflow_dispatch:
+      inputs: {}
 
 name: helperAuth - lint
 
