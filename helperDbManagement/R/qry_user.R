@@ -1,13 +1,27 @@
-#' User query
+#' Retrieve all users in a df
 #'
 #' This retrieves user data from the database
 #' (not always advisable to read the entire table)
+#' @return A data frame with user data
 #' @export
 get_users <- function() {
     DBI::dbReadTable(
         conn = get_db_connection(),
         name = "users"
     )
+}
+
+#' Retrieve user count
+#' @return The number of users, an integer
+#' @export
+get_user_count <- function() {
+    conn <- get_db_connection()
+    res <- DBI::dbGetQuery(
+        conn,
+        "SELECT COUNT(*) AS n FROM users"
+    )
+    DBI::dbDisconnect(conn)
+    as.integer(res$n)
 }
 
 #' Add a user to the database
