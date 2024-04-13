@@ -1,11 +1,6 @@
 library(shiny)
 library(bslib)
 
-# How to install the package from the mono repo
-# remotes::install_github(
-#     "MichaelHogers/ModularShiny/ShinyAdmin"
-# )
-
 ui <- bslib::page_navbar(
     title = "Penguins Ltd.",
     theme = bslib::bs_theme(
