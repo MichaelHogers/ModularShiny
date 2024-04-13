@@ -20,6 +20,9 @@ start_app <- function(
 
 #' @export
 app_ui <- function(id) {
+
+  ns <- shiny::NS(id)
+
   bslib::page_fillable(
     bslib::layout_column_wrap(
       width = "250px",
@@ -41,14 +44,30 @@ app_ui <- function(id) {
     bslib::card(
       min_height = 200,
       plotly::plot_ly(x = rnorm(100))
+    ),
+    bslib::card(
+      full_screen = TRUE,
+      max_height = 350,
+      bslib::card_header("My table"),
+      DT::dataTableOutput(ns("dt"))
     )
   )
 }
 
 #' @export
-app_server <- function(
-    id) {
+app_server <- function(id) {
   shiny::moduleServer(id, function(input, output, session) {
     logger::log_info("app server loaded")
+
+    output$dt <- DT::renderDataTable({
+      DT::datatable(
+        data.frame(
+          `User` = c("Alice", "Bob", "Charlie"),
+          `Number of Logins` = c(10, 20, 30),
+          check.names = FALSE
+        ),
+        fillContainer = TRUE
+      )
+    })
   })
 }
