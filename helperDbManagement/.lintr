@@ -1,7 +1,0 @@
-linters: linters_with_defaults(
-  object_name_linter("snake_case"),
-  object_usage_linter = NULL,
-  cyclocomp_linter(40),
-  indentation_linter = NULL
-  ) # see vignette("lintr")
-encoding: "UTF-8"
