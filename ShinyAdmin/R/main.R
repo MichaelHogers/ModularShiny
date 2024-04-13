@@ -18,6 +18,8 @@ start_app <- function(
   )
 }
 
+#' Main application UI module
+#' @param id namespace
 #' @export
 app_ui <- function(id) {
 
@@ -43,7 +45,7 @@ app_ui <- function(id) {
     ),
     bslib::card(
       min_height = 200,
-      plotly::plot_ly(x = rnorm(100))
+      plotly::plot_ly(x = stats::rnorm(100))
     ),
     bslib::card(
       full_screen = TRUE,
@@ -54,6 +56,8 @@ app_ui <- function(id) {
   )
 }
 
+#' Main application server module
+#' @param id namespace
 #' @export
 app_server <- function(id) {
   shiny::moduleServer(id, function(input, output, session) {

@@ -15,7 +15,9 @@ Imports:
     logger,
     bslib,
     bsicons,
-    DT
+    DT,
+    plotly,
+    stats
 Remotes:
     helperDesign=MichaelHogers/ModularShiny/helperDesign
 Suggests:
