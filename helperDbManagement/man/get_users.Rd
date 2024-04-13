@@ -8,4 +8,5 @@ get_users()
 }
 \description{
 This retrieves user data from the database
+(not always advisable to read the entire table)
 }
