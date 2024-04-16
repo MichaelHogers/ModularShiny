@@ -10,25 +10,12 @@ RUN echo "options(repos = c(rstudio = 'https://packagemanager.rstudio.com/cran/l
 RUN apt-get update -qq && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
-    git \
     libcurl4-openssl-dev \
-    libfontconfig1-dev \
-    libfreetype6-dev \
-    libfribidi-dev \
-    libgit2-dev \
-    libglpk-dev \
-    libgmp3-dev \
-    libharfbuzz-dev \
-    libicu-dev \
-    libjpeg-dev \
-    libpng-dev \
-    libpq-dev \
     libssl-dev \
-    libtiff-dev \
-    libxml2-dev \
     make \
     pandoc \
-    zlib1g-dev && \
+    zlib1g-dev  \
+    libicu-dev && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
