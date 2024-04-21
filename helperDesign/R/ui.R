@@ -21,7 +21,7 @@ ui_wrapper <- function(
   name <- match.arg(name)
 
   bslib::page_navbar(
-    title = "Penguins Ltd.",
+    title = "Example Ltd.",
     theme = internal_theme,
     sidebar = bslib::sidebar(
       title = "Company information",

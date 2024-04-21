@@ -2,7 +2,7 @@ library(shiny)
 library(bslib)
 
 ui <- bslib::page_navbar(
-    title = "Penguins Ltd.",
+    title = "Example Ltd.",
     theme = bslib::bs_theme(
         version = 5
     ),
