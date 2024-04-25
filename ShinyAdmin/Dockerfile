@@ -19,6 +19,11 @@ RUN apt-get update -qq && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
+# passed through via docker build command in
+# .github/workflows/ShinyAdmin-deployment.yaml
+ARG GITHUB_PAT
+ENV GITHUB_PAT=$GITHUB_PAT
+
 COPY . ShinyAdmin
 RUN R -e 'print(dir("/ShinyAdmin"));install.packages("pak"); pak::local_install("ShinyAdmin");'
 EXPOSE 3838
