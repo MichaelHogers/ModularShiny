@@ -11,12 +11,16 @@ proxy:
   specs:
   - id: admin
     container-image: registry.example.com/shinyadmin
+    container-env-file: .env
   - id: app1
     container-image: registry.example.com/shinyapp1
+    container-env-file: .env
   - id: app2
     container-image: registry.example.com/shinyapp2
+    container-env-file: .env
   - id: app3
     container-image: registry.example.com/shinyapp3
+    container-env-file: .env
 
 logging:
   file:

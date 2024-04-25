@@ -1,0 +1,4 @@
+# example, copy this into .env (which is gitignored, never commit .env)
+# the .env is picked up by application.yml
+db1_pw=
+db1_host=
