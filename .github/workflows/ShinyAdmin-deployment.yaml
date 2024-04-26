@@ -3,41 +3,37 @@ name: Deploy to Container Registry
 on:
   push:
     branches: [main, master]
-    paths:
-        - "ShinyAdmin/**"
+    paths: ["ShinyAdmin/**"]
 
 concurrency:
-  group: ${{ github.workflow }}-${{github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-
   build:
-
     name: Build Image
     runs-on: ubuntu-latest
-
     steps:
+      - name: Check out code
+        uses: actions/checkout@v2
 
-    - name: Check out code
-      uses: actions/checkout@v2
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v3
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }} # set in GHA
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # set in GHA
-        aws-region: eu-central-1
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
 
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
-
-    - name: Build, tag, and push image to Amazon ECR
-      env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: shinyadmin
-        IMAGE_TAG: <xyz>
-      run: | # set secret in GHA
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --build-arg GITHUB_PAT="${{ secrets.GITHUB_PAT }}" .
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+      - name: Build, tag, and push image to Amazon ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: shinyadmin
+          IMAGE_TAG: <xyz>
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
+            --build-arg GITHUB_PAT="${{ secrets.GITHUB_PAT }}" .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
